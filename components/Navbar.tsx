@@ -19,8 +19,8 @@ const Navbar: React.FC = () => {
 
   const navLinks = [
     { name: 'Услуги', href: '#services' },
-    { name: 'Обо мне', href: '#about' },
-    { name: 'Контакт', href: '#contact' },
+    { name: 'Отзывы', href: '#about' },
+    { name: 'Контакты', href: '#contact' },
   ];
 
   return (
@@ -64,17 +64,7 @@ const Navbar: React.FC = () => {
               {link.name}
             </a>
           ))}
-          <a 
-            href="#contact" 
-            className={`px-8 py-2.5 rounded-full text-[11px] font-bold uppercase tracking-widest transition-all duration-500 ${
-              scrolled 
-                ? 'bg-sage-800 text-white shadow-lg shadow-sage-800/10' 
-                : 'bg-white/80 text-sage-800 border border-stone-200 backdrop-blur-sm'
-            } hover:bg-slate-700 hover:text-white active:scale-95`}
-            style={{ transform: 'translateZ(0)' }}
-          >
-            Записаться
-          </a>
+
         </div>
 
         {/* Mobile Toggle */}

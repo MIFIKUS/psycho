@@ -38,35 +38,31 @@ const Hero: React.FC = () => {
         <div className="lg:col-span-7 space-y-10">
           <div className="space-y-4">
             <span className="inline-block text-[11px] font-semibold uppercase tracking-[0.4em] text-sage-800/60 border-b border-sage-800/20 pb-1">
-              Владивосток · Online · Гештальт
+              Владивосток · Online · Психолог
             </span>
             <h1 className="text-5xl md:text-8xl font-serif text-slate-900 leading-[1.05] tracking-tight">
-              Изменения <br /> 
-              начинаются <span className="italic font-light text-sage-800">здесь.</span>
+            Елена Смирнова
             </h1>
           </div>
           
           <div className="space-y-6">
-            <p className="text-xl md:text-2xl text-slate-600 font-serif italic">Елена Смирнова</p>
-            <p className="text-lg text-slate-500 max-w-xl leading-relaxed font-light">
-              Психолог, гештальт-консультант, игропрактик. Помогаю выйти из привычного сценария и обрести внутреннюю опору.
+            <p className="text-xl md:text-3xl text-slate-600 font-serif">Практический психолог,
+            <br/>
+            гештальт-консультант,
+            игропрактик</p>
+            <p className="text-lg text-slate-500 max-w-xl leading-relaxed font-light ">
+            Офлайн и онлайн консультации для взрослых (18+)
             </p>
           </div>
           
           <div className="flex flex-col sm:flex-row gap-6 pt-4">
             <a 
               href="#contact" 
-              className="bg-sage-800 text-white px-12 py-5 rounded-full text-[13px] font-medium tracking-widest uppercase hover:bg-slate-700 transition-colors shadow-lg shadow-sage-800/10 hover:shadow-sage-800/20 text-center"
+              className="bg-sage-800 text-white px-12 py-5 rounded-[18px] text-[13px] font-medium tracking-widest uppercase hover:bg-slate-700 transition-colors shadow-lg shadow-sage-800/10 hover:shadow-sage-800/20 text-center"
             >
-              Записаться
+              Записаться на консультацию
             </a>
-            <a 
-              href="https://wa.me/79147078435" 
-              target="_blank"
-              className="flex items-center justify-center gap-3 px-12 py-5 rounded-full border border-stone-200 text-[13px] font-medium tracking-widest uppercase hover:bg-white hover:border-sage-800/30 transition-all text-slate-800"
-            >
-              WhatsApp
-            </a>
+
           </div>
         </div>
 
@@ -75,7 +71,7 @@ const Hero: React.FC = () => {
             <img 
               src="/pic1.jpg" 
               alt="Психолог Елена Смирнова - Гештальт-терапевт во Владивостоке" 
-              className="w-full h-full object-cover grayscale-[0.3] hover:grayscale-0 transition-all duration-1000"
+              className="w-full h-full object-cover bluescale-[0.3] hover:grayscale-0 transition-all duration-1000"
             />
           </div>
           <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-sage-50 rounded-full blur-3xl -z-10 opacity-60" />

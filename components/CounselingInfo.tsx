@@ -20,7 +20,7 @@ const CounselingInfo: React.FC = () => {
             <div>
               <h2 className="text-sm font-bold uppercase tracking-[0.4em] text-sage-800/60 mb-6">Профессиональная поддержка</h2>
               <h3 className="text-3xl md:text-5xl font-serif text-slate-900 leading-tight">
-                Консультирование: ваш путь к <span className="italic font-light text-sage-800">гармонии и счастью</span>
+                Консультирование: ваш путь к гармонии и счастью
               </h3>
             </div>
             
@@ -60,7 +60,7 @@ const CounselingInfo: React.FC = () => {
                 ))}
              </ul>
              <div className="pt-6 border-t border-stone-200">
-               <p className="text-sm text-slate-400 mb-6 italic leading-relaxed">
+               <p className="text-sm text-slate-400 mb-6 leading-relaxed">
                  Запишитесь на консультацию и сделайте первый шаг к переменам!
                </p>
                <a href="#contact" className="inline-block bg-sage-800 text-white px-10 py-4 rounded-full text-[11px] font-bold uppercase tracking-widest hover:bg-slate-700 transition-all shadow-lg shadow-sage-800/10">

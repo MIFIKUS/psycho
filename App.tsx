@@ -8,7 +8,6 @@ import About from './components/About';
 import Contact from './components/Contact';
 import Testimonials from './components/Testimonials';
 import Footer from './components/Footer';
-import Principles from './components/Principles';
 import CounselingInfo from './components/CounselingInfo';
 import FindingSpecialist from './components/FindingSpecialist';
 
@@ -25,15 +24,11 @@ const App: React.FC = () => {
           <About />
         </section>
 
-        <section id="principles" className="py-24 md:py-40 bg-[#faf9f6]">
-          <Principles />
-        </section>
-
         <section id="services" className="py-24 md:py-40 bg-white overflow-hidden">
           <Services />
         </section>
 
-        <section id="counseling" className="py-24 md:py-40 bg-[#faf9f6]">
+        <section id="counseling" className="py-24 md:py-40 bg-[#ffffff]">
           <CounselingInfo />
         </section>
 
@@ -41,11 +36,11 @@ const App: React.FC = () => {
           <Relationships />
         </section>
 
-        <section id="finding" className="py-24 md:py-40 bg-[#faf9f6]">
+        <section id="finding" className="py-24 md:py-40 bg-[#ffffff]">
           <FindingSpecialist />
         </section>
 
-        <section id="testimonials" className="py-24 md:py-40 bg-white">
+        <section id="testimonials" className="py-24 md:py-40 bg-[#faf9f6]">
           <Testimonials />
         </section>
 

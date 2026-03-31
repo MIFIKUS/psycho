@@ -6,43 +6,45 @@ const About: React.FC = () => {
     <div className="max-w-7xl mx-auto px-6 md:px-12">
       <div className="flex flex-col lg:flex-row gap-20 items-center">
         <div className="w-full lg:w-1/2 order-2 lg:order-1">
-          <h2 className="text-base md:text-xl font-serif italic text-sage-800/80 mb-2">О специалисте</h2>
-          <h3 className="text-3xl md:text-4xl lg:text-5xl font-serif text-slate-900 mb-8 md:mb-10 leading-tight">
-            Здравствуйте, я <span className="italic font-light text-sage-800">Елена Смирнова</span>
+          <h3 className="text-xl md:text-4xl font-serif italic text-sage-800/80 mb-2">
+            Успешно работаю по запросам:
           </h3>
-          
-          <div className="space-y-8 text-base md:text-lg text-slate-600 leading-relaxed font-light">
-            <p>
-              В психологии я уже 13 лет, из которых более 10 лет посвящены плотной практике с людьми. Моя миссия — помогать взрослым находить выход из «Дня сурка» и обретать ясность.
-            </p>
-            
-            <div className="grid grid-cols-2 gap-8 py-4">
-              <div className="space-y-1">
-                <div className="text-3xl md:text-4xl font-serif text-sage-800">13 лет</div>
-                <div className="text-[10px] uppercase tracking-widest text-slate-400 font-bold">в психологии</div>
-              </div>
-              <div className="space-y-1">
-                <div className="text-3xl md:text-4xl font-serif text-sage-800">10+ лет</div>
-                <div className="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Частной практики</div>
-              </div>
-            </div>
+          <br/>
 
-            <p className="border-l-2 border-sage-100 pl-6 md:pl-8 italic text-slate-500">
-              "Со мной вам гарантированы комфортное общение, безопасность и глубокая работа над решением внутренних конфликтов."
-            </p>
+          <ul className="text-xl md:text-6xl text-slate-700 leading-relaxed space-y-2">
+            {[
+              '• Снизить тревожность, страхи, самокритику',
+              '• Укрепить самооценку, опору на себя',
+              '• Справиться с потоком навязчивых мыслей',
+              '• Справиться с трудными эмоциями (злость, обида, вина, стыд, печаль, ревность)',
+              '• Гармонизировать эмоциональное состояние',
+              '• Наладить отношения',
+              '• Определиться с выбором и принять решение',
+              '• Выйти из прокрастинации',
+            ].map((item) => (
+              <li key={item} className="flex items-start ">
+                <span
+                  className="text-xl md:text-5xl text-slate-700 leading-relaxed"
+                  aria-hidden="true"
+                />
+                <span className="text-xl md:text-2xl text-slate-700 leading-relaxed">{item}</span>
+              </li>
+            ))}
+          </ul>
 
-            <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-4 pt-4">
-              {['Тревожность и самооценка', 'Трудности в отношениях', 'Проживание сложных эмоций', 'Поиск смысла и баланса'].map((item, i) => (
-                <li key={i} className="flex items-center gap-3 text-sm font-medium text-slate-700">
-                  <span className="w-1.5 h-1.5 bg-sage-800 rounded-full shrink-0" />
-                  {item}
-                </li>
-              ))}
-            </ul>
+
+          <div className="mt-8 flex justify-center">
+            <a 
+              href="#contact" 
+              className="bg-sage-800 text-white px-12 py-5 rounded-[18px] text-[13px] font-medium tracking-widest uppercase hover:bg-slate-700 transition-colors shadow-lg shadow-sage-800/10 hover:shadow-sage-800/20 text-center"
+            >
+              Записаться
+            </a>
+
           </div>
         </div>
         
-        <div className="w-full lg:w-1/2 order-1 lg:order-2">
+        <div className="w-full h-full lg:h-1/1 lg:w-1/2 order-1 lg:order-2">
           <div className="relative p-4 max-w-md mx-auto lg:max-w-none">
             <div className="aspect-square rounded-[3rem] overflow-hidden shadow-2xl">
                <img 
@@ -58,8 +60,10 @@ const About: React.FC = () => {
             </div>
           </div>
         </div>
+        
       </div>
     </div>
+    
   );
 };
 

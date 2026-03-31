@@ -68,8 +68,35 @@ const FindingSpecialist: React.FC = () => {
         ))}
       </div>
 
-      <div className="mt-20 text-center">
-        <a href="#contact" className="inline-flex items-center gap-4 bg-slate-900 text-white px-12 py-5 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-sage-800 transition-all hover:scale-105">
+      <div className="mt-20 text-center ">
+        <a
+          href="#contact"
+          className="inline-flex items-center gap-4"
+          style={{
+            backgroundColor: '#235f79',
+            color: '#fff',
+            paddingLeft: '3rem',
+            paddingRight: '3rem',
+            paddingTop: '1.25rem',
+            paddingBottom: '1.25rem',
+            borderRadius: '9999px',
+            fontSize: '0.75rem',
+            fontWeight: 'bold',
+            textTransform: 'uppercase',
+            letterSpacing: '0.15em',
+            transition: 'all 0.2s',
+            display: 'inline-flex',
+            alignItems: 'center',
+          }}
+          onMouseOver={e => {
+            (e.currentTarget as HTMLElement).style.backgroundColor = '#153945';
+            (e.currentTarget as HTMLElement).style.transform = 'scale(1.05)';
+          }}
+          onMouseOut={e => {
+            (e.currentTarget as HTMLElement).style.backgroundColor = '#235f79';
+            (e.currentTarget as HTMLElement).style.transform = 'scale(1)';
+          }}
+        >
           Записаться на сессию
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
