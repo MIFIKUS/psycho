@@ -1,5 +1,9 @@
-
 import React, { useState } from 'react';
+
+// Масштаб OSM: zoom 17 (на экваторе 2^17 = 131072 тайлов по ширине мира). bbox под max-w-xl × высоту iframe.
+const OFFICE_LAT = 43.11828;
+const OFFICE_LON = 131.9095;
+const OFFICE_MAP_EMBED = `https://www.openstreetmap.org/export/embed.html?bbox=131.90641%2C43.11718%2C131.91259%2C43.11938&layer=mapnik&marker=${OFFICE_LAT}%2C${OFFICE_LON}`;
 
 const Contact: React.FC = () => {
   const [copied, setCopied] = useState<string | null>(null);
@@ -23,12 +27,12 @@ const Contact: React.FC = () => {
       hoverBg: 'hover:bg-sky-50/50',
       hoverBorder: 'hover:border-sky-200',
       color: 'text-sky-600',
-      type: 'link'
+      type: 'link',
+      openInNewTab: true,
     },
     {
       name: 'WhatsApp',
       value: '+7 (914) 707-84-35',
-      raw: '79147078435',
       link: 'https://wa.me/79147078435',
       icon: (
         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -38,12 +42,12 @@ const Contact: React.FC = () => {
       hoverBg: 'hover:bg-emerald-50/50',
       hoverBorder: 'hover:border-emerald-200',
       color: 'text-emerald-600',
-      type: 'copy'
+      type: 'link',
+      openInNewTab: true,
     },
     {
       name: 'Телефон',
       value: '+7 (914) 707-84-35',
-      raw: '79147078435',
       link: 'tel:+79147078435',
       icon: (
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -53,7 +57,8 @@ const Contact: React.FC = () => {
       hoverBg: 'hover:bg-stone-50',
       hoverBorder: 'hover:border-stone-300',
       color: 'text-stone-600',
-      type: 'copy'
+      type: 'link',
+      openInNewTab: false,
     },
   ];
 
@@ -70,17 +75,20 @@ const Contact: React.FC = () => {
             </p>
           </div>
 
-          <div className="space-y-6 md:space-y-8 pt-2">
-            <div className="flex gap-4 md:gap-6 items-center">
-              <div className="w-10 h-10 md:w-12 md:h-12 bg-stone-50 rounded-xl md:rounded-2xl flex items-center justify-center text-sage-800 shrink-0">
-                <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                </svg>
-              </div>
-              <div>
-                <p className="text-[9px] uppercase tracking-widest text-slate-400 font-bold mb-0.5">Кабинет</p>
-                <p className="text-sm md:text-base font-medium text-slate-800">Владивосток, Всеволода Сибирцева, 15</p>
-              </div>
+          <div className="space-y-4 md:space-y-5 pt-2">
+            <div className="w-full max-w-xl overflow-hidden border border-stone-100 bg-stone-50 grayscale touch-none select-none">
+              <img
+                src="/map.png"
+                alt="Карта: кабинет, Владивосток, Всеволода Сибирцева, 15"
+                className="w-full h-[220px] md:h-[280px] object-cover block pointer-events-none"
+                loading="lazy"
+                tabIndex={-1}
+                draggable={false}
+              />
+            </div>
+            <div>
+              <p className="text-[9px] uppercase tracking-widest text-slate-400 font-bold mb-0.5">Кабинет</p>
+              <p className="text-sm md:text-base font-medium text-slate-800">Владивосток, Всеволода Сибирцева, 15</p>
             </div>
           </div>
         </div>
@@ -89,6 +97,7 @@ const Contact: React.FC = () => {
           <div className="grid gap-4 md:gap-6">
             {contactMethods.map((method) => {
               const isCopy = method.type === 'copy';
+
               return (
                 <div key={method.name} className="relative group">
                   <a
@@ -99,8 +108,8 @@ const Contact: React.FC = () => {
                         handleCopy(method.value, method.name);
                       }
                     }}
-                    target={method.type === 'link' ? "_blank" : undefined}
-                    rel="noopener noreferrer"
+                    target={method.openInNewTab ? "_blank" : undefined}
+                    rel={method.openInNewTab ? "noopener noreferrer" : undefined}
                     className={`flex items-center justify-between p-5 md:p-8 bg-white border border-stone-100 rounded-[1.5rem] md:rounded-[2rem] transition-all duration-500 hover:shadow-xl hover:shadow-stone-200/40 ${method.hoverBg} ${method.hoverBorder} cursor-pointer`}
                   >
                     <div className="flex items-center gap-4 md:gap-6 overflow-hidden">
@@ -114,9 +123,9 @@ const Contact: React.FC = () => {
                             {method.value}
                           </p>
                           {isCopy && (
-                             <span className="text-[8px] md:text-[9px] text-slate-400 uppercase tracking-wider font-light mt-1">
-                               {copied === method.name ? '✅ Скопировано!' : 'Нажмите, чтобы скопировать'}
-                             </span>
+                            <span className="text-[8px] md:text-[9px] text-slate-400 uppercase tracking-wider font-light mt-1">
+                              {copied === method.name ? '✅ Скопировано!' : 'Нажмите, чтобы скопировать'}
+                            </span>
                           )}
                         </div>
                       </div>

@@ -7,28 +7,24 @@ const catalog = [
     time: '50 минут',
     description: 'Цель такой консультации понять, комфортно ли общение, попадает ли ваш запрос в сферу моей компетенции. Результат встречи - принять решение (да/нет) о дальнейшей работе.',
     price: '2 500 ₽',
-    tag: 'Первый шаг'
   },
   {
     title: 'Индивидуальная консультация',
-    time: '1 час ',
+    time: '60 - 80 минут',
     description: 'Для тех, кто хочет лучше понять себя, наладить более гармоничные отношения, снизить тревогу, страхи, укрепить опоры.',
     price: '4 500 ₽',
-    tag: 'Индивидуально'
   },
   {
     title: 'Парная консультация',
-    time: '90- 105 минут ',
+    time: '90- 110 минут ',
     description: 'Подходит для тех, кто хочет укрепить свои отношения, достичь большей близости, доверия и понимания. Парная терапия может быть использована для всех пар, независимо от гендера.',
     price: '6 000 ₽',
-    tag: 'Глубинная работа'
   },
   {
-    title: 'Игра "Формула Исцеления"',
-    time: '1.5 - 2.5 часа',
-    description: 'Игры в  индивидуальном формате и в группах по 2-3 человека. Мягкий способ найти ответы и пути решения.',
+    title: 'Трансформационные игры"',
+    time: '90 - 120 минут',
+    description: ' "Формула Исцеления" , "Лабиринты Сознания". Игры в  индивидуальном формате и в группах по 2-3 человека. Мягкий способ найти ответы и пути решения.',
     price: '3 500 ₽',
-    tag: 'Игропрактика'
   }
 ];
 
@@ -38,7 +34,7 @@ const Services: React.FC = () => {
       <br/>
       <div className="max-w-7xl mx-auto px-6 md:px-12 bg-[#faf9f6]">
         <div className="mb-20">
-          <h3 className="text-4xl md:text-6xl font-serif text-slate-900 leading-tight max-w-3xl">
+          <h3 className="text-2xl md:text-5xl font-serif text-slate-900 leading-tight max-w-3xl">
             Формы работы
           </h3>
         </div>
@@ -47,33 +43,30 @@ const Services: React.FC = () => {
           {catalog.map((item, index) => (
             <div 
               key={index} 
-              className="group p-10 bg-white border border-stone-100 rounded-[2.5rem] hover:border-sage-800/20 hover:shadow-2xl hover:shadow-sage-800/[0.03] transition-all duration-500"
+              className="group p-10 bg-white border border-stone-100 rounded-[2.5rem] hover:border-sage-800/20 hover:shadow-2xl hover:shadow-sage-800/[0.03] transition-all duration-500 flex flex-col h-full"
             >
-              <div className="flex justify-between items-start mb-8">
-                <span className="text-[10px] font-bold uppercase tracking-widest text-sage-800/50 bg-sage-50 px-4 py-1.5 rounded-full group-hover:bg-sage-100/50">
-                  {item.tag}
-                </span>
-                <span className="text-xs font-medium text-slate-400">{item.time}</span>
-              </div>
-              
               <h4 className="text-3xl font-serif text-slate-900 mb-4 group-hover:text-sage-800 transition-colors">
                 {item.title}
               </h4>
               
-              <p className="text-slate-500 leading-relaxed mb-10 font-light whitespace-pre-line">
+              <p className="text-lg text-slate-600 leading-relaxed font-light whitespace-pre-line flex-1 mb-8">
                 {item.description}
               </p>
               
+              <div className="flex flex-wrap justify-between items-end gap-4 pt-6 border-t border-stone-100 mt-auto">
+                <span className="text-xs font-medium text-slate-600">{item.time}</span>
+                <span className="text-lg font-serif text-sage-800">{item.price}</span>
+              </div>
             </div>
           ))}
         </div>
         <div className="mt-16 md:mt-20 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           <div>
-            <h4 className="text-4xl md:text-5xl font-serif text-slate-900 leading-tight max-w-3xl">
+            <h4 className="text-4xl md:text-4xl font-serif text-slate-900 leading-tight max-w-3xl">
               Со мной вы сможете:
             </h4>
             <br/>
-            <ul className="md:text-2xl italic font-light text-sage-800">
+            <ul className="md:text-2xl font-light text-sage-800">
               <li>• восстановиться, "пересобраться"</li>
               <li>• научиться видеть, думать и действовать по другому</li>
               <li>• начать менять свою жизнь</li>

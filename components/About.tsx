@@ -5,7 +5,7 @@ const About: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto px-6 md:px-12">
       <div className="flex flex-col lg:flex-row gap-20 items-center">
-        <div className="w-full lg:w-1/2 order-2 lg:order-1">
+        <div className="w-full lg:w-1/2 order-2 lg:order-2">
           <h3 className="text-xl md:text-4xl font-serif italic text-sage-800/80 mb-2">
             Успешно работаю по запросам:
           </h3>
@@ -44,9 +44,9 @@ const About: React.FC = () => {
           </div>
         </div>
         
-        <div className="w-full h-full lg:h-1/1 lg:w-1/2 order-1 lg:order-2">
-          <div className="relative p-4 max-w-md mx-auto lg:max-w-none">
-            <div className="aspect-square rounded-[3rem] overflow-hidden shadow-2xl">
+        <div className="w-full h-full lg:h-1/1 lg:w-1/2 order-1 lg:order-1">
+          <div className="relative p-4 w-full">
+            <div className="aspect-[3/4] rounded-[3rem] overflow-hidden shadow-2xl">
                <img 
                 src="/pic2.jpg" 
                 alt="Елена Смирнова - Профессиональная психологическая помощь" 
