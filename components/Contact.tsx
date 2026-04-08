@@ -16,8 +16,9 @@ const Contact: React.FC = () => {
 
   const contactMethods = [
     {
-      name: 'Telegram',
-      value: '@ElenaSm_VL',
+      id: 'telegram',
+      linkText: 'Написать в Телеграм',
+      copyValue: '@ElenaSm_VL',
       link: 'https://t.me/ElenaSm_VL',
       icon: (
         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -31,8 +32,25 @@ const Contact: React.FC = () => {
       openInNewTab: true,
     },
     {
-      name: 'WhatsApp',
-      value: '+7 (914) 707-84-35',
+      id: 'max',
+      linkText: 'Написать в MAX',
+      copyValue: '@ElenaSm_VL',
+      link: 'https://max.ru/u/f9LHodD0cOIF8KDalBgHse9t07AypsJWSbWppzx1pjr-YfYIaA-licSejks',
+      icon: (
+        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm5.2 15.2h-1.86V9.92l-2.88 3.84a1 1 0 01-1.6 0L7.98 9.92v7.28H6.12V6.8h1.84l3.7 4.93 3.7-4.93h1.84v10.4z" />
+        </svg>
+      ),
+      hoverBg: 'hover:bg-fuchsia-50/50',
+      hoverBorder: 'hover:border-fuchsia-200',
+      color: 'text-fuchsia-700',
+      type: 'link',
+      openInNewTab: true,
+    },
+    {
+      id: 'whatsapp',
+      linkText: 'Написать в WhatsApp',
+      copyValue: '+7 (914) 707-84-35',
       link: 'https://wa.me/79147078435',
       icon: (
         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -46,8 +64,9 @@ const Contact: React.FC = () => {
       openInNewTab: true,
     },
     {
-      name: 'Телефон',
-      value: '+7 (914) 707-84-35',
+      id: 'phone',
+      linkText: 'Позвонить',
+      copyValue: '+7 (914) 707-84-35',
       link: 'tel:+79147078435',
       icon: (
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -64,7 +83,7 @@ const Contact: React.FC = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 md:px-12">
-      <div className="bg-white rounded-[2.5rem] md:rounded-[3.5rem] p-6 md:p-16 lg:p-24 shadow-sm border border-stone-100 flex flex-col lg:flex-row gap-12 lg:gap-24 items-start md:items-center">
+      <div className="bg-white rounded-[2.5rem] md:rounded-[3.5rem] p-6 md:p-16 lg:p-24 shadow-sm border border-stone-100 flex flex-col lg:flex-row gap-12 lg:gap-24 items-start">
         <div className="lg:w-1/2 space-y-8 md:space-y-12">
           <div className="space-y-4 md:space-y-8">
             <h2 className="text-4xl md:text-7xl font-serif text-slate-900 leading-tight">
@@ -87,25 +106,34 @@ const Contact: React.FC = () => {
               />
             </div>
             <div>
-              <p className="text-[9px] uppercase tracking-widest text-slate-400 font-bold mb-0.5">Кабинет</p>
-              <p className="text-sm md:text-base font-medium text-slate-800">Владивосток, Всеволода Сибирцева, 15</p>
+              <p className="text-sm md:text-base font-medium text-slate-800">
+                Офлайн консультации проходят по адресу: г. Владивосток, ул. Всеволода Сибирцева, д. 15
+              </p>
             </div>
           </div>
         </div>
 
         <div className="lg:w-1/2 w-full">
+          <div className="mb-6 md:mb-8 space-y-3 text-slate-700 text-sm md:text-base leading-relaxed">
+            <p className="font-serif">
+              Выберите удобный для вас способ связи
+            </p>
+            <p className="font-serif">
+              В сообщении укажите формат встречи (очно/онлайн, встречу-знакомство/ консультация)
+            </p>
+          </div>
           <div className="grid gap-4 md:gap-6">
             {contactMethods.map((method) => {
               const isCopy = method.type === 'copy';
 
               return (
-                <div key={method.name} className="relative group">
+                <div key={method.id} className="relative group">
                   <a
                     href={method.link}
                     onClick={(e) => {
                       if (isCopy) {
                         e.preventDefault();
-                        handleCopy(method.value, method.name);
+                        handleCopy(method.copyValue, method.id);
                       }
                     }}
                     target={method.openInNewTab ? "_blank" : undefined}
@@ -117,14 +145,13 @@ const Contact: React.FC = () => {
                         {method.icon}
                       </div>
                       <div className="overflow-hidden">
-                        <h4 className="text-[9px] uppercase tracking-[0.2em] font-bold text-slate-400 mb-0.5">{method.name}</h4>
                         <div className="flex flex-col">
                           <p className="text-lg md:text-xl font-serif text-slate-800 whitespace-nowrap">
-                            {method.value}
+                            {method.linkText}
                           </p>
                           {isCopy && (
                             <span className="text-[8px] md:text-[9px] text-slate-400 uppercase tracking-wider font-light mt-1">
-                              {copied === method.name ? '✅ Скопировано!' : 'Нажмите, чтобы скопировать'}
+                              {copied === method.id ? '✅ Скопировано!' : 'Нажмите, чтобы скопировать'}
                             </span>
                           )}
                         </div>
