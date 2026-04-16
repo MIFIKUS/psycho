@@ -81,93 +81,113 @@ const Contact: React.FC = () => {
     },
   ];
 
+  const phoneMethod = contactMethods.find((m) => m.id === 'phone');
+  const mainMethods = contactMethods.filter((m) => m.id !== 'phone');
+
+  const renderContactMethod = (method: (typeof contactMethods)[number]) => {
+    const isCopy = method.type === 'copy';
+
+    return (
+      <div key={method.id} className="relative group">
+        <a
+          href={method.link}
+          onClick={(e) => {
+            if (isCopy) {
+              e.preventDefault();
+              handleCopy(method.copyValue, method.id);
+            }
+          }}
+          target={method.openInNewTab ? "_blank" : undefined}
+          rel={method.openInNewTab ? "noopener noreferrer" : undefined}
+          className={`flex items-center justify-between p-5 md:p-8 bg-white border border-stone-100 rounded-[1.5rem] md:rounded-[2rem] transition-all duration-500 hover:shadow-xl hover:shadow-stone-200/40 ${method.hoverBg} ${method.hoverBorder} cursor-pointer`}
+        >
+          <div className="flex items-center gap-4 md:gap-6 overflow-hidden">
+            <div className={`w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl flex items-center justify-center transition-all bg-stone-50 group-hover:bg-white group-hover:shadow-inner shrink-0 ${method.color}`}>
+              {method.icon}
+            </div>
+            <div className="overflow-hidden">
+              <div className="flex flex-col">
+                <p className="text-lg md:text-xl font-medium text-slate-800 whitespace-nowrap">
+                  {method.linkText}
+                </p>
+                {isCopy && (
+                  <span className="text-[8px] md:text-[9px] text-slate-400 uppercase tracking-wider font-light mt-1">
+                    {copied === method.id ? '✅ Скопировано!' : 'Нажмите, чтобы скопировать'}
+                  </span>
+                )}
+              </div>
+            </div>
+          </div>
+          <div className="opacity-0 group-hover:opacity-100 transition-all text-sage-800 shrink-0 ml-2">
+            <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </div>
+        </a>
+      </div>
+    );
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-4 md:px-12">
-      <div className="bg-white rounded-[2.5rem] md:rounded-[3.5rem] p-6 md:p-16 lg:p-24 shadow-sm border border-stone-100 flex flex-col lg:flex-row gap-12 lg:gap-24 items-start">
-        <div className="lg:w-1/2 space-y-8 md:space-y-12">
-          <div className="space-y-4 md:space-y-8">
-            <h2 className="text-4xl md:text-7xl font-serif text-slate-900 leading-tight">
-              Связаться <br /><span className="italic font-light text-sage-800 text-3xl md:text-6xl">со мной</span>
-            </h2>
-            <p className="text-slate-500 font-light text-lg md:text-xl leading-relaxed max-w-md">
-              Принимаю очно во Владивостоке и онлайн. Выберите удобный способ связи для записи на консультацию.
-            </p>
+      <div className="bg-white rounded-[2.5rem] md:rounded-[3.5rem] p-6 md:p-16 lg:p-24 shadow-sm border border-stone-100 flex flex-col gap-10 md:gap-12">
+        <p className="text-center lg:text-left font-serif text-2xl md:text-3xl lg:text-4xl text-slate-700 leading-snug max-w-4xl">
+          Провожу очные (офлайн) и онлайн консультации
+        </p>
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-24 items-start">
+        <div className="lg:w-1/2 flex flex-col gap-8 md:gap-12">
+          <p className="text-slate-500 font-light text-lg md:text-xl leading-relaxed max-w-md">
+            Принимаю очно во Владивостоке и онлайн. Выберите удобный способ связи для записи на консультацию.
+          </p>
+
+          <div className="w-full max-w-xl overflow-hidden border border-stone-100 bg-stone-50 grayscale touch-none select-none mx-auto lg:mx-0 mt-6 md:mt-10">
+            <img
+              src="/map.png"
+              alt="Карта: кабинет, Владивосток, Всеволода Сибирцева, 15"
+              className="w-full h-[220px] md:h-[280px] object-cover block pointer-events-none"
+              loading="lazy"
+              tabIndex={-1}
+              draggable={false}
+            />
           </div>
 
-          <div className="space-y-4 md:space-y-5 pt-2">
-            <div className="w-full max-w-xl overflow-hidden border border-stone-100 bg-stone-50 grayscale touch-none select-none">
-              <img
-                src="/map.png"
-                alt="Карта: кабинет, Владивосток, Всеволода Сибирцева, 15"
-                className="w-full h-[220px] md:h-[280px] object-cover block pointer-events-none"
-                loading="lazy"
-                tabIndex={-1}
-                draggable={false}
-              />
-            </div>
-            <div>
-              <p className="text-sm md:text-base font-medium text-slate-800">
-                Офлайн консультации проходят по адресу: г. Владивосток, ул. Всеволода Сибирцева, д. 15
-              </p>
-            </div>
+          <div className="max-w-xl mx-auto lg:mx-0 pt-2 lg:hidden">
+            <p className="text-sm md:text-base font-medium text-slate-800">
+              Офлайн консультации проходят по адресу: г. Владивосток, ул. Всеволода Сибирцева, д. 15
+            </p>
           </div>
         </div>
 
         <div className="lg:w-1/2 w-full">
           <div className="mb-6 md:mb-8 space-y-3 text-slate-700 text-sm md:text-base leading-relaxed">
-            <p className="font-serif">
+            <p className="font-medium">
               Выберите удобный для вас способ связи
             </p>
-            <p className="font-serif">
+            <p className="font-light">
               В сообщении укажите формат встречи (очно/онлайн, встречу-знакомство/ консультация)
             </p>
           </div>
           <div className="grid gap-4 md:gap-6">
-            {contactMethods.map((method) => {
-              const isCopy = method.type === 'copy';
-
-              return (
-                <div key={method.id} className="relative group">
-                  <a
-                    href={method.link}
-                    onClick={(e) => {
-                      if (isCopy) {
-                        e.preventDefault();
-                        handleCopy(method.copyValue, method.id);
-                      }
-                    }}
-                    target={method.openInNewTab ? "_blank" : undefined}
-                    rel={method.openInNewTab ? "noopener noreferrer" : undefined}
-                    className={`flex items-center justify-between p-5 md:p-8 bg-white border border-stone-100 rounded-[1.5rem] md:rounded-[2rem] transition-all duration-500 hover:shadow-xl hover:shadow-stone-200/40 ${method.hoverBg} ${method.hoverBorder} cursor-pointer`}
-                  >
-                    <div className="flex items-center gap-4 md:gap-6 overflow-hidden">
-                      <div className={`w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl flex items-center justify-center transition-all bg-stone-50 group-hover:bg-white group-hover:shadow-inner shrink-0 ${method.color}`}>
-                        {method.icon}
-                      </div>
-                      <div className="overflow-hidden">
-                        <div className="flex flex-col">
-                          <p className="text-lg md:text-xl font-serif text-slate-800 whitespace-nowrap">
-                            {method.linkText}
-                          </p>
-                          {isCopy && (
-                            <span className="text-[8px] md:text-[9px] text-slate-400 uppercase tracking-wider font-light mt-1">
-                              {copied === method.id ? '✅ Скопировано!' : 'Нажмите, чтобы скопировать'}
-                            </span>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                    <div className="opacity-0 group-hover:opacity-100 transition-all text-sage-800 shrink-0 ml-2">
-                      <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                      </svg>
-                    </div>
-                  </a>
-                </div>
-              );
-            })}
+            {mainMethods.map((method) => renderContactMethod(method))}
+            {phoneMethod ? <div className="lg:hidden">{renderContactMethod(phoneMethod)}</div> : null}
           </div>
         </div>
+        </div>
+        {phoneMethod ? (
+          <div className="hidden lg:grid grid-cols-2 gap-24 items-start">
+            <div className="max-w-xl">
+              <p className="text-sm md:text-base font-medium text-slate-800 pt-8">
+                Офлайн консультации проходят по адресу: г. Владивосток, ул. Всеволода Сибирцева, д. 15
+              </p>
+            </div>
+            <div>
+              {renderContactMethod(phoneMethod)}
+            </div>
+          </div>
+        ) : null}
+        <p className="text-center font-serif text-xl md:text-2xl text-sage-800 pt-4 md:pt-6 border-t border-stone-100">
+          Изменения начинаются с первого шага!
+        </p>
       </div>
     </div>
   );

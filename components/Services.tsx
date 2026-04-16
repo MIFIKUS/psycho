@@ -7,25 +7,45 @@ const catalog = [
     time: '50 минут',
     description: 'Цель такой консультации понять, комфортно ли общение, попадает ли ваш запрос в сферу моей компетенции. Результат встречи - принять решение (да/нет) о дальнейшей работе.',
     price: '2 500 ₽',
+    hoverBg: 'hover:bg-sky-50/50',
+    hoverBorder: 'hover:border-sky-200',
+    titleHover: 'group-hover:text-sky-700',
+    priceHover: 'group-hover:text-sky-800',
+    footerBorder: 'group-hover:border-t-sky-200/50',
   },
   {
     title: 'Индивидуальная консультация',
     time: '1 час - 1 час 20 мин',
     description: 'Для тех, кто хочет лучше понять себя, наладить более гармоничные отношения, снизить тревогу, страхи, укрепить опоры.',
     price: '4 500 ₽',
+    hoverBg: 'hover:bg-emerald-50/50',
+    hoverBorder: 'hover:border-emerald-200',
+    titleHover: 'group-hover:text-emerald-800',
+    priceHover: 'group-hover:text-emerald-900',
+    footerBorder: 'group-hover:border-t-emerald-200/50',
   },
   {
     title: 'Парная консультация',
     time: '1 час 30 мин - 1 час 50 мин',
     description: 'Подходит для тех, кто хочет укрепить свои отношения, достичь большей близости, доверия и понимания. Парная терапия может быть использована для всех пар, независимо от гендера.',
-    price: '6 000 ₽',
+    price: '6 500 ₽',
+    hoverBg: 'hover:bg-fuchsia-50/50',
+    hoverBorder: 'hover:border-fuchsia-200',
+    titleHover: 'group-hover:text-fuchsia-800',
+    priceHover: 'group-hover:text-fuchsia-900',
+    footerBorder: 'group-hover:border-t-fuchsia-200/50',
   },
   {
     title: 'Трансформационные игры',
     time: '1.5 часа - 2.5 часа',
     description: ' "Формула Исцеления" , "Лабиринты Сознания". Игры в  индивидуальном формате и в группах по 2-3 человека. Мягкий способ найти ответы и пути решения.',
     price: '3 500 ₽',
-  }
+    hoverBg: 'hover:bg-violet-50/50',
+    hoverBorder: 'hover:border-violet-200',
+    titleHover: 'group-hover:text-violet-800',
+    priceHover: 'group-hover:text-violet-900',
+    footerBorder: 'group-hover:border-t-violet-200/50',
+  },
 ];
 
 const Services: React.FC = () => {
@@ -43,9 +63,9 @@ const Services: React.FC = () => {
           {catalog.map((item, index) => (
             <div 
               key={index} 
-              className="group p-10 bg-white border border-stone-100 rounded-[2.5rem] hover:border-sage-800/20 hover:shadow-2xl hover:shadow-sage-800/[0.03] transition-all duration-500 flex flex-col h-full"
+              className={`group p-10 bg-white border border-stone-100 rounded-[2.5rem] transition-all duration-500 flex flex-col h-full hover:shadow-xl hover:shadow-stone-200/40 ${item.hoverBg} ${item.hoverBorder}`}
             >
-              <h4 className="text-3xl font-serif text-slate-900 mb-4 group-hover:text-sage-800 transition-colors">
+              <h4 className={`text-3xl font-serif text-slate-900 mb-4 transition-colors ${item.titleHover}`}>
                 {item.title}
               </h4>
               
@@ -53,9 +73,9 @@ const Services: React.FC = () => {
                 {item.description}
               </p>
               
-              <div className="flex flex-wrap justify-between items-end gap-4 pt-6 border-t border-stone-100 mt-auto">
+              <div className={`flex flex-wrap justify-between items-end gap-4 pt-6 border-t border-stone-100 mt-auto transition-colors ${item.footerBorder}`}>
                 <span className="text-xs font-medium text-slate-600">{item.time}</span>
-                <span className="text-lg font-serif text-sage-800">{item.price}</span>
+                <span className={`text-lg font-serif text-sage-800 transition-colors ${item.priceHover}`}>{item.price}</span>
               </div>
             </div>
           ))}

@@ -46,11 +46,11 @@ const Hero: React.FC = () => {
           </div>
           
           <div className="space-y-6">
-            <p className="text-xl md:text-3xl text-slate-600 font-serif">Практический психолог,
+            <p className="text-xl md:text-3xl text-slate-600 font-light">Практический психолог,
             <br/>
             гештальт-консультант,
             игропрактик</p>
-            <p className="text-lg text-slate-500 max-w-xl leading-relaxed font-light ">
+            <p className="text-lg text-slate-500 max-w-xl leading-relaxed font-light">
             Офлайн и онлайн консультации для взрослых (18+)
             </p>
           </div>
