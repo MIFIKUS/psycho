@@ -55,27 +55,27 @@ const Services: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 md:px-12 bg-[#faf9f6]">
         <div className="mb-20">
           <h3 className="text-2xl md:text-5xl font-serif text-slate-900 leading-tight max-w-3xl">
-            Формы работы
+            Формат работы
           </h3>
         </div>
     
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+        <div className="grid md:grid-cols-2 gap-5 md:gap-8 lg:gap-12">
           {catalog.map((item, index) => (
             <div 
               key={index} 
-              className={`group p-10 bg-white border border-stone-100 rounded-[2.5rem] transition-all duration-500 flex flex-col h-full hover:shadow-xl hover:shadow-stone-200/40 ${item.hoverBg} ${item.hoverBorder}`}
+              className={`group p-6 md:p-10 bg-white border border-stone-100 rounded-2xl md:rounded-[2.5rem] transition-all duration-500 flex flex-col h-full hover:shadow-xl hover:shadow-stone-200/40 ${item.hoverBg} ${item.hoverBorder}`}
             >
-              <h4 className={`text-3xl font-serif text-slate-900 mb-4 transition-colors ${item.titleHover}`}>
+              <h4 className={`text-xl md:text-3xl font-serif text-slate-900 mb-2 md:mb-4 transition-colors ${item.titleHover}`}>
                 {item.title}
               </h4>
               
-              <p className="text-lg text-slate-600 leading-relaxed font-light whitespace-pre-line flex-1 mb-8">
+              <p className="text-sm md:text-lg text-slate-600 leading-relaxed font-light whitespace-pre-line flex-1 mb-5 md:mb-8">
                 {item.description}
               </p>
               
-              <div className={`flex flex-wrap justify-between items-end gap-4 pt-6 border-t border-stone-100 mt-auto transition-colors ${item.footerBorder}`}>
-                <span className="text-xs font-medium text-slate-600">{item.time}</span>
-                <span className={`text-lg font-serif text-sage-800 transition-colors ${item.priceHover}`}>{item.price}</span>
+              <div className={`flex flex-wrap justify-between items-end gap-2 md:gap-4 pt-4 md:pt-6 border-t border-stone-100 mt-auto transition-colors ${item.footerBorder}`}>
+                <span className="text-base md:text-xs font-medium text-slate-400 md:text-slate-500">{item.time}</span>
+                <span className={`text-base md:text-lg font-serif text-sage-800 transition-colors ${item.priceHover}`}>{item.price}</span>
               </div>
             </div>
           ))}

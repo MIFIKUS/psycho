@@ -44,7 +44,7 @@ const App: React.FC = () => {
           <Testimonials />
         </section>
 
-        <section id="contact" className="py-24 md:py-40 bg-white border-t border-stone-50">
+        <section className="py-24 md:py-40 bg-white border-t border-stone-50">
           <Contact />
         </section>
       </main>
